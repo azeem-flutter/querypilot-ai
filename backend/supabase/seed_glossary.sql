@@ -1,0 +1,23 @@
+TRUNCATE querypilot.schema_documents RESTART IDENTITY;
+INSERT INTO querypilot.schema_documents (document_type, object_name, content) VALUES
+('table','customers','Customers of Northstar Retail. Columns: id, customer_name, city, created_at. Email exists but is NOT queryable (privacy).'),
+('table','categories','Product categories. Columns: id, category_name.'),
+('table','products','Catalog of products. Columns: id, product_name, category_id, unit_price (current list price), is_active.'),
+('table','orders','One row per customer order. Columns: id, customer_id, order_date (UTC), status (pending/completed/cancelled), shipping_city.'),
+('table','order_items','Line items of an order. Columns: id, order_id, product_id, quantity, unit_price (price at time of sale), discount_amount (total discount for the line, not per unit).'),
+('relationship','orders.customer_id->customers.id','Join orders to customers using orders.customer_id = customers.id.'),
+('relationship','order_items.order_id->orders.id','Join order_items to orders using order_items.order_id = orders.id.'),
+('relationship','order_items.product_id->products.id','Join order_items to products using order_items.product_id = products.id.'),
+('relationship','products.category_id->categories.id','Join products to categories using products.category_id = categories.id.'),
+('metric','gross_item_revenue','Gross item revenue = quantity * unit_price (order_items).'),
+('metric','net_item_revenue','Net item revenue = quantity * unit_price - discount_amount (order_items).'),
+('metric','completed_sales','Completed sales only include orders whose status = ''completed''.'),
+('metric','revenue','Revenue = SUM(net item revenue) over orders with status = ''completed'', unless the user explicitly asks for another definition. Urdu: sale, bikri.'),
+('metric','order_count','Order count = COUNT(DISTINCT orders.id), never count order_items rows.'),
+('metric','top_products','Top products: order by the metric the user names (revenue or units sold). If "best" has no metric, ask for clarification.'),
+('metric','last_month','Last month = previous CALENDAR month: order_date >= date_trunc(''month'', now()) - interval ''1 month'' AND order_date < date_trunc(''month'', now()). Roman Urdu: pichlay mahine.'),
+('metric','last_30_days','Last 30 days = rolling window: order_date >= now() - interval ''30 days''. Timezone: UTC. Roman Urdu: pichlay 30 din.'),
+('metric','cancelled_orders','Cancelled orders are excluded from completed-sales revenue.'),
+('policy','read_only','Only a single SELECT statement is allowed. No writes, DDL, or administrative statements.'),
+('policy','privacy','customers.email is not accessible. Never return email addresses.'),
+('policy','unsupported','Questions about data not in Northstar tables (e.g. profit, inventory, employees, suppliers) are unsupported: profit and cost data do not exist.');
