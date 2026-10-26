@@ -11,7 +11,7 @@ Prompts are never a security boundary.
 
 ## Status
 - [x] Day 1: Supabase schema, restricted role, Python DB connection, golden questions
-- [ ] Day 2: FastAPI + structured output + provider adapter
+- [x] Day 2: FastAPI + structured output + provider adapter
 - [ ] Day 3: Schema RAG
 - [ ] Day 4: LangGraph workflow
 - [ ] Day 5: SQL security + evaluation

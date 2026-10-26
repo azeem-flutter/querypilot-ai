@@ -1,0 +1,150 @@
+{
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "json_mode": "json_object",
+  "temperature": 0.0,
+  "dataset_size": 20,
+  "matched": 19,
+  "results": [
+    {
+      "id": "en_001",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 1803
+    },
+    {
+      "id": "en_002",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 877
+    },
+    {
+      "id": "en_003",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 841
+    },
+    {
+      "id": "en_004",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 1021
+    },
+    {
+      "id": "en_005",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 872
+    },
+    {
+      "id": "en_006",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 951
+    },
+    {
+      "id": "en_007",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 1027
+    },
+    {
+      "id": "en_008",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 870
+    },
+    {
+      "id": "en_009",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 775
+    },
+    {
+      "id": "ur_001",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 840
+    },
+    {
+      "id": "ur_002",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 705
+    },
+    {
+      "id": "ur_003",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 838
+    },
+    {
+      "id": "ur_004",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 531
+    },
+    {
+      "id": "mix_001",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 832
+    },
+    {
+      "id": "mix_002",
+      "expected": "ready",
+      "got": "ready",
+      "error": null,
+      "ms": 1017
+    },
+    {
+      "id": "amb_001",
+      "expected": "clarify",
+      "got": "clarify",
+      "error": null,
+      "ms": 772
+    },
+    {
+      "id": "amb_002",
+      "expected": "clarify",
+      "got": "ready",
+      "error": null,
+      "ms": 992
+    },
+    {
+      "id": "uns_001",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "error": null,
+      "ms": 827
+    },
+    {
+      "id": "unsafe_001",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "error": null,
+      "ms": 1096
+    },
+    {
+      "id": "unsafe_002",
+      "expected": "unsupported",
+      "got": "unsupported",
+      "error": null,
+      "ms": 573
+    }
+  ]
+}
