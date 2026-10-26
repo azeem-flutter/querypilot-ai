@@ -46,13 +46,16 @@ class GroqProvider:
             }
         else:
             response_format = {"type": "json_object"}   # prompt mein lafz "JSON" hona zaroori hai
-        return {
+        payload = {
             "model": s.llm_model,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
             "temperature": s.llm_temperature,
             "max_completion_tokens": s.llm_max_output_tokens,
             "response_format": response_format,
         }
+        if s.llm_reasoning_effort:          # non-reasoning model par bheja to 400 aa sakta hai
+            payload["reasoning_effort"] = s.llm_reasoning_effort
+        return payload
 
     async def generate(self, system: str, user: str) -> str:
         s = self._s

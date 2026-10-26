@@ -33,6 +33,8 @@ class Settings(BaseSettings):
     # json_schema sirf chuninda models par chalta hai; json_object sab par.
     # Local Pydantic validation hamesha hoti hai.
     llm_json_mode: Literal["json_schema", "json_object"] = "json_object"
+    # Sirf reasoning models (jaise gpt-oss) ke liye. Khali = parameter bheja hi nahi jata.
+    llm_reasoning_effort: Literal["", "low", "medium", "high"] = ""
 
     @field_validator("database_url")
     @classmethod

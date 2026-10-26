@@ -95,3 +95,16 @@ def test_missing_key_is_not_configured():
 
 def test_api_key_is_not_printed():
     assert "sk-secret" not in repr(settings())
+
+
+def test_reasoning_effort_is_sent_only_when_configured():
+    seen = []
+
+    def handler(request):
+        seen.append(json.loads(request.content))
+        return ok_response("{}")
+
+    run(provider(handler).generate("s", "u"))
+    run(provider(handler, llm_reasoning_effort="low").generate("s", "u"))
+    assert "reasoning_effort" not in seen[0]
+    assert seen[1]["reasoning_effort"] == "low"

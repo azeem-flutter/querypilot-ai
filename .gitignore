@@ -9,3 +9,5 @@ __pycache__/
 build/
 coverage/
 *.log
+.vscode/
+backend/evaluation/reports/status_check_*.json
